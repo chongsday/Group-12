@@ -33,7 +33,9 @@ body {
 
 .navbar-brand {
   font-weight: 700;
+  margin-left: -50px; /* 로고와 글씨를 더 왼쪽으로 이동 */
 }
+
 
 .grid-container {
   display: grid;
@@ -177,6 +179,29 @@ body {
   transform: scale(1.1);
 }
 
+
+.container{
+  width: 1000px;
+}
+  .first-line
+  { justify-content:space-between;
+  align-items: center;
+  display: flex;
+}
+
+.slogan{
+  color: gray;
+  display: none;
+  font-size: 18px;
+  padding-bottom: 20px;}
+
+.copyright {
+  text-align: left; 
+  font-size: 14px;
+  margin-top: 20px;
+}
+
+
 @media screen and (max-width: 992px) {
   .grid-container {
     grid-template-columns: repeat(4, 1fr); /* 태블릿: 3열 */
@@ -193,6 +218,7 @@ body {
   .grid-container {
     grid-template-columns: repeat(1fr); /* 모바일: 1열 */
   }
+  
 }
 .container {
   max-width: 992px;
@@ -205,8 +231,8 @@ body {
 }
 
 .icons i {
-  margin-right: 10px;
-  font-size: 20px;
+  margin-left: 20px;
+  font-size: 25px;
 }
 
 @media (max-width: 992px) {
@@ -214,7 +240,7 @@ body {
     display: block;
     text-align: center;
   }
-}
+} 
 
 .sns-area {
   justify-content: center;
@@ -224,6 +250,37 @@ body {
 .footer-container {
   text-align: center;
 }
+
+.footer-container {
+  text-align: center;
+}
+
 .slogan {
-  display: block;
+  display: none;
+  font-size: 18px;
+  padding-bottom: 20px;
+}
+
+@media (max-width: 992px) {
+  .footer-container {
+    text-align: center;
+  }
+  .slogan {
+    display: block;
+  }
+  .copyright {
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+  .copyright {
+    text-align: center;
+  }
+  }
+}
+
+@media (max-width: 480px) {
+  .copyright {
+    text-align: center;
+  }
 }
