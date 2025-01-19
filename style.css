@@ -11,7 +11,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 100vh;
+  /* height: 100vh;*/
   background-color: #f8f9fa;
 }
 
@@ -42,56 +42,99 @@ body {
   grid-template-rows: repeat(4, 1fr); /* 세로 4칸 */
   gap: 10px; /* 박스 간 간격 */
   width: 100%;
-  max-width: 800px; /* 그리드의 최대 너비 */
+  max-width: 1024px; /* 그리드의 최대 너비 */
   margin: 0 auto;
   margin-top: 20px;
 }
 
+.text-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.6); /* 반투명한 배경 */
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 400;
+  opacity: 0; /* 기본적으로 보이지 않음 */
+  transition: opacity 0.3s ease; /* 부드러운 전환 효과 */
+}
+
 .grid-item {
   position: relative;
-  width: 100%; /* 부모 그리드 셀에 맞춤 */
+  /* width: 100%; /* 부모 그리드 셀에 맞춤 */
   /* padding-top: 100%; 정사각형 비율 유지 */
   overflow: hidden; /* 넘치는 이미지를 숨김 */
   background-color: #f4f4f4; /* 이미지가 없을 경우 배경 색 */
   border-radius: 20px; /* 모서리 둥글게 */
-  display: flex;
+  /* display: flex;
   justify-content: center;
   align-items: center;
-  transition: opacity 0.3s ease; /* 호버시 애니메이션 효과 */
+  /* transition: opacity 0.3s ease; /* 호버시 애니메이션 효과 */
 }
-
-.grid-item:hover . text-overlay {
-  opacity; 1;/* 호버시 텍스트 표시 */}
-
 
 .grid-item img {
   position: absolute;
-  top: 50%;
+  /* top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); /* 중심 정렬 */
   width: 100%;
-  height: auto;
+  height: 100%;
   min-height: 100%; /* 세로 크기 부족 시 확장 */
   min-width: 100%; /* 가로 크기 부족 시 확장 */
   object-fit: cover; /* 크롭 효과 */
   border-radius: 5px; /* 이미지 모서리 둥글게 */
+  display: block;
 }
 
 .single-1 {
   aspect-ratio: 1/1;
 } /*한 칸짜리 박스만 정사각 비율 */
+
 .single-2 {
   color: gray;
   aspect-ratio: 1/1;/*한 칸짜리 박스만 정사각 비율 */
 } 
+.single-2:hover .text-overlay {
+  opacity: 1; /* 텍스트가 보이도록 변경 */
+}
 
-.text-overlay{
+.single-3 {
   color: gray;
+  aspect-ratio: 1/1;/*한 칸짜리 박스만 정사각 비율 */
+} 
+.single-3:hover .text-overlay {
+  opacity: 1; /* 텍스트가 보이도록 변경 */
+}
+
+.single-4 {
+  color: white;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000;
+  aspect-ratio: 1/1;/*한 칸짜리 박스만 정사각 비율 */
+}
+
+.single-4:hover {
+  transform: scale(1.1);
 }
 
 .item-1 {
   grid-column: span 2; /* 가로로 두 칸 */
+  position: relative;
+  width: 100%;
+  overflow: hidden; /* 컨테이너를 벗어난 텍스트 숨기기 */
 }
+.item-1:hover .text-overlay {
+  opacity: 1; /* 텍스트가 보이도록 변경 */
+}
+
 .item-3 {
   color: white;
   font-size: 15rem;
@@ -123,27 +166,35 @@ body {
   transform: scale(1.1);
 }
 
-.item-9 {
+.item-8 {
   grid-column: span 4; /* 가로로 두 칸 */
+  position: relative;
+  width: 100%;
+  background-color: #f2f2f2;
 }
 
-@media screen and (max-width: 768px) {
-  .grid-container {
-    max-width: 50px; /* 모바일에서 더 작은 최대 크기 설정 */
-    max-height: 50px;
+  /* 애니메이션 정의 */
+@keyframes scroll-up {
+  0% {
+    bottom: -50px; /* 시작 위치 */
+  }
+  100% {
+    bottom: 100%; /* 끝 위치 */
+  }
+}
+@media screen and (max-width: 1024px) {
+  .bento-container {
+    grid-template-columns: repeat(4, 1fr); /* 태블릿: 3열 */
   }
 }
 
 @media screen and (max-width: 768px) {
-  .grid-container {
-    grid-template-columns: repeat(4, 1fr); /* 2개의 열 */
+  .bento-container {
+    grid-template-columns: repeat(2, 1fr); /* 작은 화면: 2열 */
   }
 }
 
-/* 더 작은 화면 (화면 크기 480px 이하) */
 @media screen and (max-width: 480px) {
-  .grid-container {
-    grid-template-columns: 2fr; /* 1개의 열 */
+  .bento-container {
+    grid-template-columns: repeat(1fr); /* 모바일: 1열 */
   }
-}
-
